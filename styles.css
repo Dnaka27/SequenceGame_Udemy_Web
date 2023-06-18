@@ -3,6 +3,17 @@ body {
   background-color: #011F3F;
 }
 
+.volIcon{
+  padding: 1rem;
+  color: gray;
+  font-size: 5vh;
+  float: left
+}
+
+.volIcon:hover{
+  color: white;
+}
+
 #level-title, #score-title, #restart-title{
   font-family: 'Open Sans', cursive;
   font-size: 4rem;
