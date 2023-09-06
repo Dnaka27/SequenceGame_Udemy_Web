@@ -16,8 +16,6 @@ var condVol = false;
 volIcon.on("click", () => {
 	volIcon.toggleClass("fa-volume-xmark fa-volume-high");
 	condVol = !condVol;
-	console.log("click");
-	console.log(condVol);
 });
 
 /* INICIAR JOGO */
@@ -50,7 +48,7 @@ function nextSequence() {
 
 	var randomId = "#" + randomChosenColour; /* Id aleatoria */
 	$(randomId).fadeOut(100).fadeIn(100); /* Animacao de flash */
-	playSound(randomChosenColour);
+	playSound(condVol, randomChosenColour);
 }
 
 /* ESCOLHA DE BOTAO PELO USUARIO */
@@ -58,7 +56,7 @@ function nextSequence() {
 $(".btn").on("click", function () {
 	userChosenColour = $(this).attr("id"); /* Pegar id do botao escolhido */
 	userClickedPattern.push(userChosenColour); /* Adicionar ao array */
-	playSound(userChosenColour);
+	playSound(condVol, userChosenColour);
 	animatePress(userChosenColour);
 	checkAnswer(userClickedPattern.length - 1);
 });
@@ -66,6 +64,7 @@ $(".btn").on("click", function () {
 function playSound(condVol, name) {
 	if (condVol === true) {
 		var audio = new Audio("sounds/" + name + ".mp3");
+		audio.volume = 0.25;
 		audio.play();
 	}
 }
